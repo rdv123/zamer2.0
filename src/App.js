@@ -1,18 +1,63 @@
 import logoA from './logoA.png';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+
+const [clients,setClient] = useState( 
+  [
+    {
+      id:'1',
+      tel:'333333333',
+      date:'13.09.21', 
+      marked: false, 
+      clientName: {
+                  firstName:'Вася',
+                  lastName:'Пупкин', 
+                  patronymic:'Иванович'
+                }, 
+      address:{
+                city:'Гродно',
+                street:'Советская',
+                home:'1',
+                housing:'2',
+                apartment:'33', 
+              },
+      statusClient:'Замер'
+    },
+    {
+      id:'2',
+      tel:'4444444444',
+      date:'13.09.21', 
+      marked: false, 
+      clientName: {
+                  firstName:'Петя',
+                  lastName:'Иванов', 
+                  patronymic:'Иванович'
+                }, 
+      address:{
+                city:'Гродно',
+                street:'Клецкова',
+                home:'33',
+                housing:'2',
+                apartment:'44', 
+              },
+      statusClient:'Думает'
+    },
+  ]
+)
+
   return (
     <div className="container mt-3">
      
       <nav className="navbar navbar-expand-lg navbar-light bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand fs-6 text-light" href="#"> 
-           <img src={logoA} width="55" height="50"/>Объектов в работе: {"10"} Из них: Замеры- {"3"}, Думает- {"2"}, Монтаж- {"4"}, Установлено- {"1"}
+           <img src={logoA} width="55" height="50"/>
           </a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
-          </button>
+          </button> */}
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
           
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
@@ -22,29 +67,47 @@ function App() {
               <li className="nav-item">
                 <a className="nav-link text-light" >Текущая дата: {"11.11.11"}</a>
               </li>
-              {/* <li classNameName="nav-item dropdown">
-                <a classNameName="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {/* <li className="nav-item dropdown">
+                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Dropdown
                 </a>
-                <ul classNameName="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a classNameName="dropdown-item" href="#">Action</a></li>
-                  <li><a classNameName="dropdown-item" href="#">Another action</a></li>
-                  <li><hr classNameName="dropdown-divider"/></li>
-                  <li><a classNameName="dropdown-item" href="#">Something else here</a></li>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a className="dropdown-item" href="#">Action</a></li>
+                  <li><a className="dropdown-item" href="#">Another action</a></li>
+                  <li><hr className="dropdown-divider"/></li>
+                  <li><a className="dropdown-item" href="#">Something else here</a></li>
                 </ul>
+              </li>*/}
+              <li className="nav-item">
+                <a className="nav-link disabled text-light" href="#" tabindex="-1" aria-disabled="true">Замеры
+                  <span class="badge bg-secondary">4</span>
+                </a>
               </li>
-              <li classNameName="nav-item">
-                <a classNameName="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-              </li> */}
+              <li className="nav-item">
+                <a className="nav-link disabled text-light" href="#" tabindex="-1" aria-disabled="true">Думает
+                  <span class="badge bg-secondary">5</span>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link disabled text-light" href="#" tabindex="-1" aria-disabled="true">Монтаж
+                  <span class="badge bg-secondary">3</span>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link disabled text-light" href="#" tabindex="-1" aria-disabled="true">Всего
+                  <span class="badge bg-secondary">12</span>
+                </a>
+              </li>
             </ul>
             <form className="d-flex ms-auto">
               <input className="form-control me-2" type="search" placeholder="Поиск" aria-label="Search"/>
               <button className="btn btn-outline-success" type="submit">Найти</button>
             </form>
+
           </div>
         </div>
       </nav>
-      <form className="row g-3 mt-3 text-light bg-dark">
+      <form className="row g-3 mt-3 text-light bg-secondary shadow">
         <div className="col-md-3">
           <label for="inputEmail4" className="form-label" >Моб. телефон</label>
           <input type="email" className="form-control" id="inputEmail4" placeholder="+375"/>
@@ -61,13 +124,13 @@ function App() {
           <label for="inputPassword4" className="form-label">Отчество</label>
           <input type="password" className="form-control" id="inputPassword4"/>
         </div>
-        <div className="col-md-3">
-          <label for="inputCity" className="form-label">Населенный пункт (город/поселок)</label>
+        <div className="col-md-2">
+          <label for="inputCity" className="form-label">Город/поселок</label>
           <input type="text" className="form-control" id="inputCity" placeholder=""/>
         </div>
-        <div className="col-md-3">
+        <div className="col-md-2">
           <label for="inputAddress" className="form-label">Улица</label>
-          <input type="text" className="form-control" id="inputAddress" placeholder="Проспект Ленина"/>
+          <input type="text" className="form-control" id="inputAddress" placeholder=""/>
         </div>
         <div className="col-md-1">
           <label for="inputState" className="form-label">Дом</label>
@@ -81,13 +144,7 @@ function App() {
           <label for="inputState" className="form-label">Квартира</label>
           <input type="text" className="form-control" id="inputCity" placeholder=""/>
         </div>
-       
-        {/* <div className="col-12">
-          <label for="inputAddress2" className="form-label">Адрес 2</label>
-          <input type="text" className="form-control" id="inputAddress2" placeholder="Квартира"/>
-        </div> */}
-        
-        <div className="col-md-3">
+        <div className="col-md-2">
           <label for="inputState" className="form-label">Статус</label>
           <select id="inputState" className="form-select">
             <option selected>Выберите...</option>
@@ -96,6 +153,10 @@ function App() {
             <option>Монтаж</option>
             <option>Установлен</option>
           </select>
+        </div>
+        <div className="col-md-3">
+          <label for="inputAddress" className="form-label">Комментарий</label>
+          <input type="text" className="form-control" id="inputAddress" placeholder=""/>
         </div>
         {/* <div className="col-md-2">
           <label for="inputZip" className="form-label">Индекс</label>
@@ -114,7 +175,46 @@ function App() {
         </div>
       </form>
 
-
+      <div> 
+        <ul className="list-group">
+          {clients.map(
+            (client)=>
+              {
+                return (
+                          <div className='d-flex mt-3 shadow bg-info' key={client.id}>
+                            <div class="row">
+                              <div class="col-sm">
+                                <img src={logoA} width="100" height="100"/>
+                              </div>
+                              <div class="col-sm">
+                                Одна из трёх колонок
+                              </div>
+                              <div class="col-sm">
+                              <button 
+                                  type="button" 
+                                  className="btn btn-danger"> 
+                                  Редактировать
+                                </button>
+                              </div>
+                            </div>
+                            {/* <div className='mt-3 mb-3'>
+                              <img src={logoA} width="100" height="100"/>
+                              <div className="p-2 bg-light">
+                                вввввввввв
+                                <button 
+                                  type="button" 
+                                  className="btn btn-danger"> 
+                                  Редактировать
+                                </button>
+                              </div>
+                            </div> */}
+                          </div>
+                        )
+              }
+            )
+          }  
+        </ul>
+      </div>
     </div>
   );
 }
