@@ -1,10 +1,23 @@
 import logoA from './logoA.png';
 import { useState } from 'react';
 import './App.css';
+import Client from './components/client';
 
+
+
+let count = 3
 function App() {
+const [tel, setTel] = useState('')
+const [firstName, setFirstName] = useState('')
+const [lastName, setLastName] = useState('')
+const [patronymic, setPatronymic] = useState('')
+const [city, setCity] = useState('')
+const [street, setStreet] = useState('')
+const [home, setHome] = useState('')
+const [housing, setHousing] = useState('')
+const [apartment, setApartment] = useState('')
 
-const [clients,setClient] = useState( 
+const [clients,setClients] = useState( 
   [
     {
       id:'1',
@@ -46,7 +59,45 @@ const [clients,setClient] = useState(
     },
   ]
 )
+let d = new Date()
 
+let pushInfo = (e)=>{
+  e.preventDefault()
+  const newObj = {
+    id:count,
+    tel:tel,
+    // date:'13.09.21', 
+    marked: false, 
+    clientName: {
+                firstName:firstName,
+                lastName:lastName, 
+                patronymic:patronymic
+              }, 
+    address:{
+              city:city,
+              street:street,
+              home:home,
+              housing:housing,
+              apartment:apartment, 
+            },
+    //statusClient:statusClient
+  }
+  count++
+  setClients([newObj,...clients])
+  setTel('')
+  setFirstName('')
+  setLastName('')
+  setPatronymic('')
+  setCity('')
+  setStreet('')
+  setHome('')
+  setHousing('')
+  setApartment('')
+
+
+console.log('tel',tel)
+ 
+}
   return (
     <div className="container mt-3">
      
@@ -55,29 +106,15 @@ const [clients,setClient] = useState(
           <a className="navbar-brand fs-6 text-light" href="#"> 
            <img src={logoA} width="55" height="50"/>
           </a>
-          {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button> */}
+          
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
           
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              {/* <li classNameName="nav-item">
-                <a classNameName="nav-link active" aria-current="page" href="#">Home</a>
-              </li> */}
+             
               <li className="nav-item">
                 <a className="nav-link text-light" >Текущая дата: {"11.11.11"}</a>
               </li>
-              {/* <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a className="dropdown-item" href="#">Action</a></li>
-                  <li><a className="dropdown-item" href="#">Another action</a></li>
-                  <li><hr className="dropdown-divider"/></li>
-                  <li><a className="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>*/}
+            
               <li className="nav-item">
                 <a className="nav-link disabled text-light" href="#" tabindex="-1" aria-disabled="true">Замеры
                   <span class="badge bg-secondary">4</span>
@@ -110,39 +147,92 @@ const [clients,setClient] = useState(
       <form className="row g-3 mt-3 text-light bg-secondary shadow">
         <div className="col-md-3">
           <label for="inputEmail4" className="form-label" >Моб. телефон</label>
-          <input type="email" className="form-control" id="inputEmail4" placeholder="+375"/>
+          <input type="text" 
+          className="form-control" 
+          id="inputEmail4" 
+          placeholder="+375"
+          value = {tel}
+          onChange ={
+          (event)=>setTel(event.target.value)
+          
+          }/>
         </div>
         <div className="col-md-3">
           <label for="inputPassword4" className="form-label">Фамилия</label>
-          <input type="password" className="form-control" id="inputPassword4"/>
+          <input type="text"  
+          className="form-control" 
+          id="inputPassword4"
+          value = {firstName}
+          onChange ={
+          (event)=>setFirstName(event.target.value)}/>
         </div>
         <div className="col-md-3">
           <label for="inputPassword4" className="form-label">Имя</label>
-          <input type="password" className="form-control" id="inputPassword4"/>
+          <input type="text"  
+          className="form-control" 
+          id="inputPassword4"
+          value = {lastName}
+          onChange ={
+          (event)=>setLastName(event.target.value)}/>
         </div>
         <div className="col-md-3">
           <label for="inputPassword4" className="form-label">Отчество</label>
-          <input type="password" className="form-control" id="inputPassword4"/>
+          <input type="text" 
+          className="form-control" 
+          id="inputPassword4"
+          value = {patronymic}
+          onChange ={
+          (event)=>setPatronymic(event.target.value)}/>
         </div>
         <div className="col-md-2">
           <label for="inputCity" className="form-label">Город/поселок</label>
-          <input type="text" className="form-control" id="inputCity" placeholder=""/>
+          <input type="text" 
+          className="form-control" 
+          id="inputCity" 
+          placeholder=""
+          value = {city}
+          onChange ={
+          (event)=>setCity(event.target.value)}/>
         </div>
         <div className="col-md-2">
           <label for="inputAddress" className="form-label">Улица</label>
-          <input type="text" className="form-control" id="inputAddress" placeholder=""/>
+          <input type="text"
+          className="form-control" 
+          id="inputAddress" 
+          placeholder=""
+          value = {street}
+          onChange ={
+          (event)=>setStreet(event.target.value)}/>
         </div>
         <div className="col-md-1">
           <label for="inputState" className="form-label">Дом</label>
-          <input type="text" className="form-control" id="inputCity" placeholder=""/>
+          <input type="text" 
+          className="form-control"
+          id="inputCity" 
+          placeholder=""
+          value = {home}
+          onChange ={
+          (event)=>setHome(event.target.value)}/>
         </div>
         <div className="col-md-1">
           <label for="inputState" className="form-label">Корпус</label>
-          <input type="text" className="form-control" id="inputCity" placeholder=""/>
+          <input type="text" 
+          className="form-control" 
+          id="inputCity" 
+          placeholder=""
+          value = {housing}
+          onChange ={
+          (event)=>setHousing(event.target.value)}/>
         </div>
         <div className="col-md-1">
           <label for="inputState" className="form-label">Квартира</label>
-          <input type="text" className="form-control" id="inputCity" placeholder=""/>
+          <input type="text" 
+          className="form-control" 
+          id="inputCity" 
+          placeholder=""
+          value = {apartment}
+          onChange ={
+          (event)=>setApartment(event.target.value)}/>
         </div>
         <div className="col-md-2">
           <label for="inputState" className="form-label">Статус</label>
@@ -158,10 +248,7 @@ const [clients,setClient] = useState(
           <label for="inputAddress" className="form-label">Комментарий</label>
           <input type="text" className="form-control" id="inputAddress" placeholder=""/>
         </div>
-        {/* <div className="col-md-2">
-          <label for="inputZip" className="form-label">Индекс</label>
-          <input type="text" className="form-control" id="inputZip"/>
-        </div> */}
+        
         <div className="col-12">
           <div className="form-check">
             <input className="form-check-input" type="checkbox" id="gridCheck"/>
@@ -171,49 +258,14 @@ const [clients,setClient] = useState(
           </div>
         </div>
         <div className="col-12">
-          <button type="submit" className="btn btn-primary mb-2">Добавить</button>
+          <button type="submit" 
+          className="btn btn-primary mb-2"
+          onClick={(e)=>pushInfo(e)}>Добавить</button>
         </div>
       </form>
 
       <div> 
-        <ul className="list-group">
-          {clients.map(
-            (client)=>
-              {
-                return (
-                          <div className='d-flex mt-3 shadow bg-info' key={client.id}>
-                            <div class="row">
-                              <div class="col-sm">
-                                <img src={logoA} width="100" height="100"/>
-                              </div>
-                              <div class="col-sm">
-                                Одна из трёх колонок
-                              </div>
-                              <div class="col-sm">
-                              <button 
-                                  type="button" 
-                                  className="btn btn-danger"> 
-                                  Редактировать
-                                </button>
-                              </div>
-                            </div>
-                            {/* <div className='mt-3 mb-3'>
-                              <img src={logoA} width="100" height="100"/>
-                              <div className="p-2 bg-light">
-                                вввввввввв
-                                <button 
-                                  type="button" 
-                                  className="btn btn-danger"> 
-                                  Редактировать
-                                </button>
-                              </div>
-                            </div> */}
-                          </div>
-                        )
-              }
-            )
-          }  
-        </ul>
+        <Client />
       </div>
     </div>
   );
