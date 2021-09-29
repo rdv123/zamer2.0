@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router'
 
 const Design = ({clients}, {pushInfoProps}) => {
         const [tel, setTel] = useState('')
@@ -10,7 +11,14 @@ const Design = ({clients}, {pushInfoProps}) => {
         const [home, setHome] = useState('')
         const [housing, setHousing] = useState('')
         const [apartment, setApartment] = useState('')
-       
+        // const [client,setClient] = useState(null)
+    //    const id ='2'
+       let { id } = useParams();
+        
+        console.log('id',id)
+    let client = clients.find((client) => client.id == id)  
+    console.log('client',client)
+    
     return (
         <div>
             Периметр/площадь и т.д
@@ -21,7 +29,7 @@ const Design = ({clients}, {pushInfoProps}) => {
                 className="form-control" 
                 id="inputEmail4" 
                 placeholder="+375"
-                value = {tel}
+                value = {client.tel}
                 onChange ={
                 (event)=>setTel(event.target.value)}/>
                 </div>
@@ -30,7 +38,7 @@ const Design = ({clients}, {pushInfoProps}) => {
                 <input type="text"  
                 className="form-control" 
                 id="inputPassword4"
-                value = {firstName}
+                value = {client.firstName}
                 onChange ={
                 (event)=>setFirstName(event.target.value)}/>
                 </div>
@@ -39,7 +47,7 @@ const Design = ({clients}, {pushInfoProps}) => {
                 <input type="text"  
                 className="form-control" 
                 id="inputPassword4"
-                value = {lastName}
+                value = {client.lastName}
                 onChange ={
                 (event)=>setLastName(event.target.value)}/>
                 </div>
@@ -48,7 +56,7 @@ const Design = ({clients}, {pushInfoProps}) => {
                 <input type="text" 
                 className="form-control" 
                 id="inputPassword4"
-                value = {patronymic}
+                value = {client.patronymic}
                 onChange ={
                 (event)=>setPatronymic(event.target.value)}/>
                 </div>
@@ -58,7 +66,7 @@ const Design = ({clients}, {pushInfoProps}) => {
                 className="form-control" 
                 id="inputCity" 
                 placeholder=""
-                value = {city}
+                value = {client.city}
                 onChange ={
                 (event)=>setCity(event.target.value)}/>
                 </div>
@@ -68,7 +76,7 @@ const Design = ({clients}, {pushInfoProps}) => {
                 className="form-control" 
                 id="inputAddress" 
                 placeholder=""
-                value = {street}
+                value = {client.street}
                 onChange ={
                 (event)=>setStreet(event.target.value)}/>
                 </div>
@@ -78,7 +86,7 @@ const Design = ({clients}, {pushInfoProps}) => {
                 className="form-control"
                 id="inputCity" 
                 placeholder=""
-                value = {home}
+                value = {client.home}
                 onChange ={
                 (event)=>setHome(event.target.value)}/>
                 </div>
@@ -88,7 +96,7 @@ const Design = ({clients}, {pushInfoProps}) => {
                 className="form-control" 
                 id="inputCity" 
                 placeholder=""
-                value = {housing}
+                value = {client.housing}
                 onChange ={
                 (event)=>setHousing(event.target.value)}/>
                 </div>
@@ -98,7 +106,7 @@ const Design = ({clients}, {pushInfoProps}) => {
                 className="form-control" 
                 id="inputCity" 
                 placeholder=""
-                value = {apartment}
+                value = {client.apartment}
                 onChange ={
                 (event)=>setApartment(event.target.value)}/>
                 </div>

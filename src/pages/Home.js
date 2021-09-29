@@ -19,48 +19,7 @@ let count = 3
     const [housing, setHousing] = useState('')
     const [apartment, setApartment] = useState('')
 
-    // const [clients, setClients] = useState(
-    //   [
-    //     {
-    //       id: '1',
-    //       tel: '333333333',
-    //       date: '13.09.21',
-    //       marked: false,
-    //       clientName: {
-    //         firstName: 'Вася',
-    //         lastName: 'Пупкин',
-    //         patronymic: 'Иванович'
-    //       },
-    //       address: {
-    //         city: 'Гродно',
-    //         street: 'Советская',
-    //         home: '1',
-    //         housing: '2',
-    //         apartment: '33',
-    //       },
-    //       statusClient: 'Замер'
-    //     },
-    //     {
-    //       id: '2',
-    //       tel: '4444444444',
-    //       date: '13.09.21',
-    //       marked: false,
-    //       clientName: {
-    //         firstName: 'Петя',
-    //         lastName: 'Иванов',
-    //         patronymic: 'Иванович'
-    //       },
-    //       address: {
-    //         city: 'Гродно',
-    //         street: 'Клецкова',
-    //         home: '33',
-    //         housing: '2',
-    //         apartment: '44',
-    //       },
-    //       statusClient: 'Думает'
-    //     },
-    //   ]
-    // )
+   
     let d = new Date()
     let client
 
@@ -96,7 +55,6 @@ let count = 3
       setHome('')
       setHousing('')
       setApartment('')
-
 
       console.log('tel', tel)
 
