@@ -6,15 +6,17 @@ import { useHistory } from "react-router-dom";
 const Client = ({ newClientsProps, dateProps, })=>{
   
     let   history = useHistory()
-    const handleClick=(id)=>{
-      console.log(id,)
-      // history.push('/design/')
-    }
+    // const handleClick=(id)=>{
+    //   console.log(id,)
+    //   // history.push('/design/')
+    // }
     return (
         <div>
             <ul className="list-group">
             {newClientsProps.map(
             (client)=>{
+              console.log({},'client.date')
+              console.log('new Date()',new Date())
                 return (
                           <div className='d-flex mt-3 shadow  test' key={client.id}>
                             <div className="row">
@@ -34,7 +36,7 @@ const Client = ({ newClientsProps, dateProps, })=>{
                                 Статус:{client.statusClient}
                               </div>
                               <div>
-                                {dateProps.toLocaleString()}
+                                {client.date.toLocaleString()}
                               </div>
                               <div className="col-sm">
                                 {/* <HomeButton/> */}

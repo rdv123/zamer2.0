@@ -5,9 +5,6 @@ import Client from '../components/Client';
 import Forma from '../components/Forma';
 import { NavLink } from 'react-router-dom';
 
-
-
-let count = 3 
   function Home( {setClients,clients}) {
     const [tel, setTel] = useState('')
     const [firstName, setFirstName] = useState('')
@@ -23,42 +20,42 @@ let count = 3
     let d = new Date()
     let client
 
-    let pushInfo = (e) => {
-      e.preventDefault()
-      const newObj = {
-        id: count,
-        tel: tel,
-        // date:'13.09.21', 
-        marked: false,
-        clientName: {
-          firstName: firstName,
-          lastName: lastName,
-          patronymic: patronymic
-        },
-        address: {
-          city: city,
-          street: street,
-          home: home,
-          housing: housing,
-          apartment: apartment,
-        },
-        //statusClient:statusClient
-      }
-      count++
-      setClients([newObj, ...clients])
-      setTel('')
-      setFirstName('')
-      setLastName('')
-      setPatronymic('')
-      setCity('')
-      setStreet('')
-      setHome('')
-      setHousing('')
-      setApartment('')
+    // let pushInfo = (e) => {
+    //   e.preventDefault()
+    //   const newObj = {
+    //     id: count,
+    //     tel: tel,
+    //     // date:'13.09.21', 
+    //     marked: false,
+    //     clientName: {
+    //       firstName: firstName,
+    //       lastName: lastName,
+    //       patronymic: patronymic
+    //     },
+    //     address: {
+    //       city: city,
+    //       street: street,
+    //       home: home,
+    //       housing: housing,
+    //       apartment: apartment,
+    //     },
+    //     //statusClient:statusClient
+    //   }
+    //   count++
+    //   setClients([newObj, ...clients])
+    //   setTel('')
+    //   setFirstName('')
+    //   setLastName('')
+    //   setPatronymic('')
+    //   setCity('')
+    //   setStreet('')
+    //   setHome('')
+    //   setHousing('')
+    //   setApartment('')
 
-      console.log('tel', tel)
+    //   console.log('newObj', newObj)
 
-    }
+    // }
     return (
       <div className="container mt-3">
 
@@ -73,7 +70,7 @@ let count = 3
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
                 <li className="nav-item">
-                  <a className="nav-link text-light" >Текущая дата: {"11.11.11"}</a>
+                  <a className="nav-link text-light" >Текущая дата: {d.toLocaleString()}</a>
                 </li>
 
                 <li className="nav-item">
@@ -107,25 +104,8 @@ let count = 3
         </nav>
         <div>
           <Forma
-            telProps={tel}
-            firstName={firstName}
-            lastName={lastName}
-            patronymic={patronymic}
-            city={city}
-            street={street}
-            home={home}
-            housing={housing}
-            apartment = {apartment}
-            setTelProps={setTel}
-            pushInfoProps={pushInfo}
-            setFirstNameProps={setFirstName}
-            setLastNameProps={setFirstName}
-            setPatronymicProps={setPatronymic}
-            setCityProps={setCity}
-            setStreetProps={setStreet}
-            setHomeProps={setHome}
-            setHousingProps={setHousing}
-            setApartmentProps={setApartment}
+          setClients={setClients} clients={clients}
+            // pushInfoProps={pushInfo}
           />
 
         </div>

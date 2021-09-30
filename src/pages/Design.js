@@ -2,23 +2,22 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 
 const Design = ({clients}, {pushInfoProps}) => {
-        const [tel, setTel] = useState('')
-        const [firstName, setFirstName] = useState('')
-        const [lastName, setLastName] = useState('')
-        const [patronymic, setPatronymic] = useState('')
-        const [city, setCity] = useState('')
-        const [street, setStreet] = useState('')
-        const [home, setHome] = useState('')
-        const [housing, setHousing] = useState('')
-        const [apartment, setApartment] = useState('')
+       
         // const [client,setClient] = useState(null)
     //    const id ='2'
        let { id } = useParams();
         
         console.log('id',id)
     let client = clients.find((client) => client.id == id)  
-    console.log('client',client)
-    
+    const [tel, setTel] = useState(client.tel)
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [patronymic, setPatronymic] = useState('')
+    const [city, setCity] = useState('')
+    const [street, setStreet] = useState('')
+    const [home, setHome] = useState('')
+    const [housing, setHousing] = useState('')
+    const [apartment, setApartment] = useState('')
     return (
         <div>
             Периметр/площадь и т.д
@@ -29,7 +28,7 @@ const Design = ({clients}, {pushInfoProps}) => {
                 className="form-control" 
                 id="inputEmail4" 
                 placeholder="+375"
-                value = {client.tel}
+                value = {tel}
                 onChange ={
                 (event)=>setTel(event.target.value)}/>
                 </div>
@@ -38,7 +37,7 @@ const Design = ({clients}, {pushInfoProps}) => {
                 <input type="text"  
                 className="form-control" 
                 id="inputPassword4"
-                value = {client.firstName}
+                value = {client.clientName.firstName}
                 onChange ={
                 (event)=>setFirstName(event.target.value)}/>
                 </div>
@@ -47,7 +46,7 @@ const Design = ({clients}, {pushInfoProps}) => {
                 <input type="text"  
                 className="form-control" 
                 id="inputPassword4"
-                value = {client.lastName}
+                value = {client.clientName.lastName}
                 onChange ={
                 (event)=>setLastName(event.target.value)}/>
                 </div>
@@ -56,7 +55,7 @@ const Design = ({clients}, {pushInfoProps}) => {
                 <input type="text" 
                 className="form-control" 
                 id="inputPassword4"
-                value = {client.patronymic}
+                value = {client.clientName.patronymic}
                 onChange ={
                 (event)=>setPatronymic(event.target.value)}/>
                 </div>
@@ -66,7 +65,7 @@ const Design = ({clients}, {pushInfoProps}) => {
                 className="form-control" 
                 id="inputCity" 
                 placeholder=""
-                value = {client.city}
+                value = {client.address.city}
                 onChange ={
                 (event)=>setCity(event.target.value)}/>
                 </div>
@@ -76,7 +75,7 @@ const Design = ({clients}, {pushInfoProps}) => {
                 className="form-control" 
                 id="inputAddress" 
                 placeholder=""
-                value = {client.street}
+                value = {client.address.street}
                 onChange ={
                 (event)=>setStreet(event.target.value)}/>
                 </div>
@@ -86,7 +85,7 @@ const Design = ({clients}, {pushInfoProps}) => {
                 className="form-control"
                 id="inputCity" 
                 placeholder=""
-                value = {client.home}
+                value = {client.address.home}
                 onChange ={
                 (event)=>setHome(event.target.value)}/>
                 </div>
@@ -96,7 +95,7 @@ const Design = ({clients}, {pushInfoProps}) => {
                 className="form-control" 
                 id="inputCity" 
                 placeholder=""
-                value = {client.housing}
+                value = {client.address.housing}
                 onChange ={
                 (event)=>setHousing(event.target.value)}/>
                 </div>
@@ -106,7 +105,7 @@ const Design = ({clients}, {pushInfoProps}) => {
                 className="form-control" 
                 id="inputCity" 
                 placeholder=""
-                value = {client.apartment}
+                value = {client.address.apartment}
                 onChange ={
                 (event)=>setApartment(event.target.value)}/>
                 </div>
@@ -138,7 +137,8 @@ const Design = ({clients}, {pushInfoProps}) => {
                 
                     <button type="submit" 
                     className="btn btn-primary mb-2"
-                    onClick={(e)=>pushInfoProps(e)}>Добавить</button>
+                    onClick={(e)=>console.log('save')}
+                    >Сохранить</button>
                 </div>
               
             </form>

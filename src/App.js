@@ -53,13 +53,23 @@ function App() {
       },
     ]
   )
-  
+  const updateTel=(id,tel)=>{
+    const newArray = clients.map((client)=>{
+      if(client.id ==id){
+        client.tel = tel
+      }
+      return client
+    })
+    setClients(newArray)
+  }
+  console.log('clients',clients)
   return (
     <Switch>
      <>
      <Route path="/" exact component={()=><Home setClients={setClients} clients={clients}/>} />
      <Route path='/about' component={About}/>
      <Route path='/design/:id' component={()=><Design clients={clients}/>}/>
+     {/* <button onClick={()=>updateTel(2,77777)} >set tel</button> */}
      </>
     </Switch>
  
