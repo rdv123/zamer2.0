@@ -70,7 +70,7 @@ import { NavLink } from 'react-router-dom';
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
                 <li className="nav-item">
-                  <a className="nav-link text-light" >Текущая дата: {d.toLocaleString()}</a>
+                  <a className="nav-link text-light" >Сегодня {d.toLocaleString()}</a>
                 </li>
 
                 <li className="nav-item">

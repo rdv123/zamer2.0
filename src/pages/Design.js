@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
+import { useHistory } from 'react-router';
 
-const Design = ({clients}, {pushInfoProps}) => {
-       
+
+const Design = ({clients,updateCom}) => {
+
+    let history=useHistory()
         // const [client,setClient] = useState(null)
     //    const id ='2'
        let { id } = useParams();
@@ -10,7 +13,7 @@ const Design = ({clients}, {pushInfoProps}) => {
         console.log('id',id)
     let client = clients.find((client) => client.id == id)  
     const [tel, setTel] = useState(client.tel)
-    const [firstName, setFirstName] = useState('')
+    const [firstName, setFirstName] = useState(client.clientName.firstName)
     const [lastName, setLastName] = useState('')
     const [patronymic, setPatronymic] = useState('')
     const [city, setCity] = useState('')
@@ -18,6 +21,17 @@ const Design = ({clients}, {pushInfoProps}) => {
     const [home, setHome] = useState('')
     const [housing, setHousing] = useState('')
     const [apartment, setApartment] = useState('')
+    
+   
+    const commonUpdate =(e)=>{
+        e.preventDefault()
+        const newClient = {...client,tel,clientName:{firstName}}
+        console.log('Client',client)
+        // console.log('newClient',newClient)
+        updateCom(id,newClient)
+    }
+    
+
     return (
         <div>
             Периметр/площадь и т.д
@@ -37,7 +51,7 @@ const Design = ({clients}, {pushInfoProps}) => {
                 <input type="text"  
                 className="form-control" 
                 id="inputPassword4"
-                value = {client.clientName.firstName}
+                value = {firstName}
                 onChange ={
                 (event)=>setFirstName(event.target.value)}/>
                 </div>
@@ -132,13 +146,18 @@ const Design = ({clients}, {pushInfoProps}) => {
                     </label>
                 </div>
                 </div>
-
-                <div className="col-12">
                 
+                <div className="col-12">
+                  
                     <button type="submit" 
                     className="btn btn-primary mb-2"
-                    onClick={(e)=>console.log('save')}
+                    onClick={(e)=>commonUpdate(e)} 
                     >Сохранить</button>
+                    <button type="submit" 
+                    className="btn btn-primary mb-2 ms-2"
+                    onClick={()=> history.push(`/`)}
+                    >На главную</button>
+                    
                 </div>
               
             </form>

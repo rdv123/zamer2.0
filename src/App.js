@@ -12,8 +12,7 @@ import Home from './pages/Home';
 let count = 3
 function App() {
   const [clients, setClients] = useState(
-    [
-      {
+    [ {
         id: '1',
         tel: '333333333',
         date: '13.09.21',
@@ -34,7 +33,7 @@ function App() {
       },
       {
         id: '2',
-        tel: '4444444444',
+        tel: '222222',
         date: '13.09.21',
         marked: false,
         clientName: {
@@ -53,22 +52,24 @@ function App() {
       },
     ]
   )
-  const updateTel=(id,tel)=>{
-    const newArray = clients.map((client)=>{
-      if(client.id ==id){
-        client.tel = tel
-      }
-      return client
-    })
-    setClients(newArray)
+  
+  const updateCom=(id,newClient)=>{
+    console.log('id',id)
+    console.log('newClientApp',newClient)
+    const index = clients.findIndex((zveno)=>zveno.id ==id)
+    console.log('index', index)
+    clients[index] = newClient
+    setClients(clients)
   }
+
+
   console.log('clients',clients)
   return (
     <Switch>
      <>
      <Route path="/" exact component={()=><Home setClients={setClients} clients={clients}/>} />
      <Route path='/about' component={About}/>
-     <Route path='/design/:id' component={()=><Design clients={clients}/>}/>
+     <Route path='/design/:id' component={()=><Design clients={clients} setClients={setClients} updateCom={updateCom} />}/>
      {/* <button onClick={()=>updateTel(2,77777)} >set tel</button> */}
      </>
     </Switch>
