@@ -18,6 +18,7 @@ const Forma = ({
         const [home, setHome] = useState('')
         const [housing, setHousing] = useState('')
         const [apartment, setApartment] = useState('')
+        const [statusClient, setStatusClient] = useState('')
 
         // let dateClient = dateProps
         let pushInfo = (e) => {
@@ -39,7 +40,7 @@ const Forma = ({
                 housing: housing,
                 apartment: apartment,
               },
-              //statusClient:statusClient
+              statusClient:statusClient
             }
             count++
             setClients([newObj, ...clients])
@@ -52,6 +53,7 @@ const Forma = ({
             setHome('')
             setHousing('')
             setApartment('')
+            setStatusClient('Выберите...')
       
             // console.log('newObj', newObj)
           }
@@ -71,7 +73,7 @@ const Forma = ({
                 (event)=>setTel(event.target.value)}/>
                 </div>
                 <div className="col-md-3">
-                <label for="inputPassword4" className="form-label">Фамилия</label>
+                <label for="inputPassword4" className="form-label">Имя</label>
                 <input type="text"  
                 className="form-control" 
                 id="inputPassword4"
@@ -80,7 +82,7 @@ const Forma = ({
                 (event)=>setFirstName(event.target.value)}/>
                 </div>
                 <div className="col-md-3">
-                <label for="inputPassword4" className="form-label">Имя</label>
+                <label for="inputPassword4" className="form-label">Фамилия</label>
                 <input type="text"  
                 className="form-control" 
                 id="inputPassword4"
@@ -149,12 +151,17 @@ const Forma = ({
                 </div>
                 <div className="col-md-2">
                 <label for="inputState" className="form-label">Статус</label>
-                <select id="inputState" className="form-select">
-                    <option selected>Выберите...</option>
-                    <option>Замер</option>
-                    <option>Думает</option>
-                    <option>Монтаж</option>
-                    <option>Установлен</option>
+                <select 
+                    id="inputState" 
+                    className="form-select"
+                    value={statusClient}
+                    onChange ={
+                        (event)=>setStatusClient(event.target.value)}>
+                        <option selected>Выберите...</option>
+                        <option>Замер</option>
+                        <option>Думает</option>
+                        <option>Монтаж</option>
+                        <option>Установлен</option>
                 </select>
                 </div>
                 <div className="col-md-3">

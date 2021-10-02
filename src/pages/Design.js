@@ -14,18 +14,24 @@ const Design = ({clients,updateCom}) => {
     let client = clients.find((client) => client.id == id)  
     const [tel, setTel] = useState(client.tel)
     const [firstName, setFirstName] = useState(client.clientName.firstName)
-    const [lastName, setLastName] = useState('')
-    const [patronymic, setPatronymic] = useState('')
-    const [city, setCity] = useState('')
-    const [street, setStreet] = useState('')
-    const [home, setHome] = useState('')
-    const [housing, setHousing] = useState('')
-    const [apartment, setApartment] = useState('')
+    const [lastName, setLastName] = useState(client.clientName.lastName)
+    const [patronymic, setPatronymic] = useState(client.clientName.patronymic)
+    const [city, setCity] = useState(client.address.city)
+    const [street, setStreet] = useState(client.address.street)
+    const [home, setHome] = useState(client.address.home)
+    const [housing, setHousing] = useState(client.address.housing)
+    const [apartment, setApartment] = useState(client.address.apartment)
+    const [statusClient, setStatusClient] = useState(client.statusClient)
     
    
     const commonUpdate =(e)=>{
         e.preventDefault()
-        const newClient = {...client,tel,clientName:{firstName}}
+        const newClient = {...client,
+            tel,
+            clientName:{firstName,lastName,patronymic},
+            address:{city,street,home,housing,apartment},
+            statusClient:statusClient
+        }
         console.log('Client',client)
         // console.log('newClient',newClient)
         updateCom(id,newClient)
@@ -47,7 +53,7 @@ const Design = ({clients,updateCom}) => {
                 (event)=>setTel(event.target.value)}/>
                 </div>
                 <div className="col-md-3">
-                <label for="inputPassword4" className="form-label">Фамилия</label>
+                <label for="inputPassword4" className="form-label">Имя</label>
                 <input type="text"  
                 className="form-control" 
                 id="inputPassword4"
@@ -56,11 +62,11 @@ const Design = ({clients,updateCom}) => {
                 (event)=>setFirstName(event.target.value)}/>
                 </div>
                 <div className="col-md-3">
-                <label for="inputPassword4" className="form-label">Имя</label>
+                <label for="inputPassword4" className="form-label">Фамилия</label>
                 <input type="text"  
                 className="form-control" 
                 id="inputPassword4"
-                value = {client.clientName.lastName}
+                value = {lastName}
                 onChange ={
                 (event)=>setLastName(event.target.value)}/>
                 </div>
@@ -69,7 +75,7 @@ const Design = ({clients,updateCom}) => {
                 <input type="text" 
                 className="form-control" 
                 id="inputPassword4"
-                value = {client.clientName.patronymic}
+                value = {patronymic}
                 onChange ={
                 (event)=>setPatronymic(event.target.value)}/>
                 </div>
@@ -79,7 +85,7 @@ const Design = ({clients,updateCom}) => {
                 className="form-control" 
                 id="inputCity" 
                 placeholder=""
-                value = {client.address.city}
+                value = {city}
                 onChange ={
                 (event)=>setCity(event.target.value)}/>
                 </div>
@@ -125,12 +131,17 @@ const Design = ({clients,updateCom}) => {
                 </div>
                 <div className="col-md-2">
                 <label for="inputState" className="form-label">Статус</label>
-                <select id="inputState" className="form-select">
-                    <option selected>Выберите...</option>
-                    <option>Замер</option>
-                    <option>Думает</option>
-                    <option>Монтаж</option>
-                    <option>Установлен</option>
+                <select 
+                    id="inputState" 
+                    className="form-select"
+                    value={statusClient}
+                    onChange ={
+                        (event)=>setStatusClient(event.target.value)}>
+                        <option selected>Выберите...</option>
+                        <option>Замер</option>
+                        <option>Думает</option>
+                        <option>Монтаж</option>
+                        <option>Установлен</option>
                 </select>
                 </div>
                 <div className="col-md-3">

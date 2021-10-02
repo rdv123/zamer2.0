@@ -15,47 +15,13 @@ import { NavLink } from 'react-router-dom';
     const [home, setHome] = useState('')
     const [housing, setHousing] = useState('')
     const [apartment, setApartment] = useState('')
+    const [statusClient, setStatusClient] = useState('')
 
    
     let d = new Date()
     let client
 
-    // let pushInfo = (e) => {
-    //   e.preventDefault()
-    //   const newObj = {
-    //     id: count,
-    //     tel: tel,
-    //     // date:'13.09.21', 
-    //     marked: false,
-    //     clientName: {
-    //       firstName: firstName,
-    //       lastName: lastName,
-    //       patronymic: patronymic
-    //     },
-    //     address: {
-    //       city: city,
-    //       street: street,
-    //       home: home,
-    //       housing: housing,
-    //       apartment: apartment,
-    //     },
-    //     //statusClient:statusClient
-    //   }
-    //   count++
-    //   setClients([newObj, ...clients])
-    //   setTel('')
-    //   setFirstName('')
-    //   setLastName('')
-    //   setPatronymic('')
-    //   setCity('')
-    //   setStreet('')
-    //   setHome('')
-    //   setHousing('')
-    //   setApartment('')
-
-    //   console.log('newObj', newObj)
-
-    // }
+   
     return (
       <div className="container mt-3">
 

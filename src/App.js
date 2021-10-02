@@ -70,7 +70,6 @@ function App() {
      <Route path="/" exact component={()=><Home setClients={setClients} clients={clients}/>} />
      <Route path='/about' component={About}/>
      <Route path='/design/:id' component={()=><Design clients={clients} setClients={setClients} updateCom={updateCom} />}/>
-     {/* <button onClick={()=>updateTel(2,77777)} >set tel</button> */}
      </>
     </Switch>
  
