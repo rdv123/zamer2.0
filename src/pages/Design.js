@@ -12,6 +12,7 @@ const Design = ({clients,updateCom}) => {
         
         console.log('id',id)
     let client = clients.find((client) => client.id == id)  
+
     const [tel, setTel] = useState(client.tel)
     const [firstName, setFirstName] = useState(client.clientName.firstName)
     const [lastName, setLastName] = useState(client.clientName.lastName)
@@ -22,6 +23,7 @@ const Design = ({clients,updateCom}) => {
     const [housing, setHousing] = useState(client.address.housing)
     const [apartment, setApartment] = useState(client.address.apartment)
     const [statusClient, setStatusClient] = useState(client.statusClient)
+    const [comment, setComment] = useState(client.comment)
     
    
     const commonUpdate =(e)=>{
@@ -30,7 +32,8 @@ const Design = ({clients,updateCom}) => {
             tel,
             clientName:{firstName,lastName,patronymic},
             address:{city,street,home,housing,apartment},
-            statusClient:statusClient
+            statusClient:statusClient,
+            comment: comment
         }
         console.log('Client',client)
         // console.log('newClient',newClient)
@@ -146,7 +149,12 @@ const Design = ({clients,updateCom}) => {
                 </div>
                 <div className="col-md-3">
                 <label for="inputAddress" className="form-label">Комментарий</label>
-                <input type="text" className="form-control" id="inputAddress" placeholder=""/>
+                <input type="text" 
+                    className="form-control" 
+                    id="inputAddress" 
+                    placeholder=""
+                    value={comment}
+                    onChange={(event)=>setComment(event.target.value)}/>
                 </div>
                 
                 <div className="col-12">

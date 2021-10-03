@@ -33,7 +33,8 @@ const Client = ({ newClientsProps, dateProps, })=>{
                                 {client.address.home},
                                 {client.address.housing},
                                 {client.address.apartment},
-                                Статус:{client.statusClient}
+                                Статус:{client.statusClient},
+                                Комментарий:{client.comment}
                               </div>
                               <div>
                                 {client.date.toLocaleString()}

@@ -16,6 +16,7 @@ import { NavLink } from 'react-router-dom';
     const [housing, setHousing] = useState('')
     const [apartment, setApartment] = useState('')
     const [statusClient, setStatusClient] = useState('')
+    const [comment, setComment] = useState('')
 
    
     let d = new Date()

@@ -29,7 +29,8 @@ function App() {
           housing: '2',
           apartment: '33',
         },
-        statusClient: 'Замер'
+        statusClient: 'Замер',
+        comment:'fffffff'
       },
       {
         id: '2',
@@ -48,7 +49,8 @@ function App() {
           housing: '2',
           apartment: '44',
         },
-        statusClient: 'Думает'
+        statusClient: 'Думает',
+        comment: 'ddddddd'
       },
     ]
   )

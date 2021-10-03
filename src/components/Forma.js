@@ -19,6 +19,7 @@ const Forma = ({
         const [housing, setHousing] = useState('')
         const [apartment, setApartment] = useState('')
         const [statusClient, setStatusClient] = useState('')
+        const [comment, setComment]=useState('')
 
         // let dateClient = dateProps
         let pushInfo = (e) => {
@@ -40,7 +41,8 @@ const Forma = ({
                 housing: housing,
                 apartment: apartment,
               },
-              statusClient:statusClient
+              statusClient:statusClient,
+              comment:comment
             }
             count++
             setClients([newObj, ...clients])
@@ -166,7 +168,12 @@ const Forma = ({
                 </div>
                 <div className="col-md-3">
                 <label for="inputAddress" className="form-label">Комментарий</label>
-                <input type="text" className="form-control" id="inputAddress" placeholder=""/>
+                <input type="text"
+                 className="form-control" 
+                 id="inputAddress" 
+                 placeholder=""
+                 value={comment}
+                 onChange={(event)=>setComment(event.target.value)}/>
                 </div>
                 
                 <div className="col-12">
