@@ -24,6 +24,8 @@ const Design = ({clients,updateCom}) => {
     const [apartment, setApartment] = useState(client.address.apartment)
     const [statusClient, setStatusClient] = useState(client.statusClient)
     const [comment, setComment] = useState(client.comment)
+    const [area, setArea] = useState(client.area)
+    const [perimeter, setPerimeter] = useState(client.perimeter)
     
    
     const commonUpdate =(e)=>{
@@ -33,7 +35,9 @@ const Design = ({clients,updateCom}) => {
             clientName:{firstName,lastName,patronymic},
             address:{city,street,home,housing,apartment},
             statusClient:statusClient,
-            comment: comment
+            comment: comment,
+            area:area,
+            perimeter: perimeter
         }
         console.log('Client',client)
         // console.log('newClient',newClient)
@@ -148,15 +152,35 @@ const Design = ({clients,updateCom}) => {
                 </select>
                 </div>
                 <div className="col-md-3">
-                <label for="inputAddress" className="form-label">Комментарий</label>
-                <input type="text" 
-                    className="form-control" 
-                    id="inputAddress" 
-                    placeholder=""
-                    value={comment}
-                    onChange={(event)=>setComment(event.target.value)}/>
+                    <label for="inputAddress" className="form-label">Комментарий</label>
+                    <input type="text" 
+                        className="form-control" 
+                        id="inputAddress" 
+                        placeholder=""
+                        value={comment}
+                        onChange={(event)=>setComment(event.target.value)}
+                    />
                 </div>
-                
+                <div className="col-md-3">
+                    <label for="inputAddress" className="form-label">Площадь</label>
+                    <input type="text" 
+                        className="form-control" 
+                        id="inputAddress" 
+                        placeholder=""
+                        value={area}
+                        onChange={(event)=>setArea(event.target.value)}
+                    />
+                </div>
+                <div className="col-md-3">
+                    <label for="inputAddress" className="form-label">Периметр</label>
+                    <input type="text" 
+                        className="form-control" 
+                        id="inputAddress" 
+                        placeholder=""
+                        value={perimeter}
+                        onChange={(event)=>setPerimeter(event.target.value)}
+                    />
+                </div>
                 <div className="col-12">
                 <div className="form-check">
                     <input className="form-check-input" type="checkbox" id="gridCheck"/>
