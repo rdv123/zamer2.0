@@ -22,6 +22,13 @@ import { NavLink } from 'react-router-dom';
     let d = new Date()
     let client
 
+    let test = clients.length
+    console.log (test)
+    let a = clients.filter(client=>client.statusClient === 'Замер')
+    console.log (a, 'aaaaa')
+    let b = clients.filter(client=>client.statusClient === 'Думает')
+    let c = clients.filter(client=>client.statusClient === 'Договор')
+
    
     return (
       <div className="container mt-3">
@@ -42,17 +49,17 @@ import { NavLink } from 'react-router-dom';
 
                 <li className="nav-item">
                   <a className="nav-link disabled text-light" href="#" tabindex="-1" aria-disabled="true">Замеры
-                    <span className="badge bg-secondary">4</span>
+                    <span className="badge bg-secondary">{a.length}</span>
                   </a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link disabled text-light" href="#" tabindex="-1" aria-disabled="true">Думает
-                    <span className="badge bg-secondary">5</span>
+                    <span className="badge bg-secondary">{b.length}</span>
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link  text-light" href="#" tabindex="-1" aria-disabled="true">Монтаж
-                    <span className="badge bg-secondary">3</span>
+                  <a className="nav-link  text-light" href="#" tabindex="-1" aria-disabled="true">Договор
+                    <span className="badge bg-secondary">{c.length}</span>
                   </a>
                 </li>
                 <li className="nav-item">

@@ -162,6 +162,7 @@ const Forma = ({
                         <option selected>Выберите...</option>
                         <option>Замер</option>
                         <option>Думает</option>
+                        <option>Договор</option>
                         <option>Монтаж</option>
                         <option>Установлен</option>
                 </select>

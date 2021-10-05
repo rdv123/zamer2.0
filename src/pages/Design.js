@@ -102,7 +102,7 @@ const Design = ({clients,updateCom}) => {
                 className="form-control" 
                 id="inputAddress" 
                 placeholder=""
-                value = {client.address.street}
+                value = {street}
                 onChange ={
                 (event)=>setStreet(event.target.value)}/>
                 </div>
@@ -112,7 +112,7 @@ const Design = ({clients,updateCom}) => {
                 className="form-control"
                 id="inputCity" 
                 placeholder=""
-                value = {client.address.home}
+                value = {home}
                 onChange ={
                 (event)=>setHome(event.target.value)}/>
                 </div>
@@ -122,7 +122,7 @@ const Design = ({clients,updateCom}) => {
                 className="form-control" 
                 id="inputCity" 
                 placeholder=""
-                value = {client.address.housing}
+                value = {housing}
                 onChange ={
                 (event)=>setHousing(event.target.value)}/>
                 </div>
@@ -132,7 +132,7 @@ const Design = ({clients,updateCom}) => {
                 className="form-control" 
                 id="inputCity" 
                 placeholder=""
-                value = {client.address.apartment}
+                value = {apartment}
                 onChange ={
                 (event)=>setApartment(event.target.value)}/>
                 </div>
@@ -147,6 +147,7 @@ const Design = ({clients,updateCom}) => {
                         <option selected>Выберите...</option>
                         <option>Замер</option>
                         <option>Думает</option>
+                        <option>Договор</option>
                         <option>Монтаж</option>
                         <option>Установлен</option>
                 </select>
