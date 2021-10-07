@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 
@@ -46,6 +46,8 @@ const Forma = ({
             }
             count++
             setClients([newObj, ...clients])
+             localStorage.setItem('clientsDate',JSON.stringify([newObj, ...clients]))
+            
             setTel('')
             setFirstName('')
             setLastName('')
@@ -59,7 +61,7 @@ const Forma = ({
       
             // console.log('newObj', newObj)
           }
-
+          
 // console.log('фамилия',firstName)
     return(
         <div>

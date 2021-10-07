@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import About from './pages/About';
 import Design from './pages/Design';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Home from './pages/Home';
 
@@ -63,7 +63,11 @@ function App() {
     clients[index] = newClient
     setClients(clients)
   }
-
+  useEffect(()=>{
+    const raw = localStorage.getItem('clientsDate')
+    const clientsLocale = JSON.parse(raw)
+     setClients(clientsLocale)
+},[])
 
   console.log('clients',clients)
   return (

@@ -25,7 +25,7 @@ import { NavLink } from 'react-router-dom';
     let test = clients.length
     console.log (test)
     let a = clients.filter(client=>client.statusClient === 'Замер')
-    console.log (a, 'aaaaa')
+    
     let b = clients.filter(client=>client.statusClient === 'Думает')
     let c = clients.filter(client=>client.statusClient === 'Договор')
 
