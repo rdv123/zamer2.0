@@ -9,6 +9,7 @@ const Forma = ({
     clients,
     dateProps
  })=>{
+     
     const [tel, setTel] = useState('')
         const [firstName, setFirstName] = useState('')
         const [lastName, setLastName] = useState('')
@@ -21,11 +22,13 @@ const Forma = ({
         const [statusClient, setStatusClient] = useState('')
         const [comment, setComment]=useState('')
 
-        // let dateClient = dateProps
+        
+
         let pushInfo = (e) => {
+            count++
             e.preventDefault()
             const newObj = {
-              id: count,
+              id: count.toString(),
               tel: tel,
               date: new Date(), 
               marked: false,
@@ -44,9 +47,10 @@ const Forma = ({
               statusClient:statusClient,
               comment:comment
             }
-            count++
+            
             setClients([newObj, ...clients])
-             localStorage.setItem('clientsDate',JSON.stringify([newObj, ...clients]))
+            
+            localStorage.setItem('clientsDate',JSON.stringify([newObj, ...clients]))
             
             setTel('')
             setFirstName('')

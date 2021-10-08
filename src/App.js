@@ -64,9 +64,17 @@ function App() {
     setClients(clients)
   }
   useEffect(()=>{
+   
+    console.log('ccccccccccc', clients)
+    // localStorage.setItem('clientsDate',JSON.stringify(clients))
     const raw = localStorage.getItem('clientsDate')
+    console.log('raw',raw)
+  if(raw === null){
+     return
+  }
     const clientsLocale = JSON.parse(raw)
      setClients(clientsLocale)
+     console.log('clientsLocale',clientsLocale)
 },[])
 
   console.log('clients',clients)
