@@ -66,8 +66,8 @@ function App() {
   useEffect(()=>{
    
     console.log('ccccccccccc', clients)
-    // localStorage.setItem('clientsDate',JSON.stringify(clients))
-    const raw = localStorage.getItem('clientsDate')
+    // localStorage.setItem('clientsData',JSON.stringify(clients))
+    const raw = localStorage.getItem('clientsData')
     console.log('raw',raw)
   if(raw === null){
      return

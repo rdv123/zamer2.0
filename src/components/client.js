@@ -3,7 +3,7 @@ import logoA from '../../src/logoA.png' ;
 import HomeButton from "./HomeBtn";
 import { useHistory } from "react-router-dom";
 
-const Client = ({ newClientsProps, dateProps, })=>{
+const Client = ({ newClientsProps, dateProps, deleteClient })=>{
   
     let   history = useHistory()
     // const handleClick=(id)=>{
@@ -44,8 +44,16 @@ const Client = ({ newClientsProps, dateProps, })=>{
                                  <button 
                                  onClick={()=> history.push(`/design/${client.id}`)}
                                   type="button" 
-                                  className="btn btn-danger"> 
+                                  className="btn btn-success"> 
                                   Редактировать
+                                </button>
+                              </div>
+                              <div className="col-sm">
+                                 <button 
+                                 onClick={()=>deleteClient(client.id) }
+                                  type="button" 
+                                  className="btn btn-danger"> 
+                                  Удалить
                                 </button>
                               </div>
                             </div>

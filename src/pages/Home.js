@@ -26,6 +26,10 @@ import { NavLink } from 'react-router-dom';
     
     let b = clients.filter(client=>client.statusClient === 'Думает')
     let c = clients.filter(client=>client.statusClient === 'Договор')
+    
+    let deleteClient = (id) =>{
+      setClients([...clients].filter((client)=>client.id !== id))
+    }
 
    
     return (
@@ -86,6 +90,7 @@ import { NavLink } from 'react-router-dom';
           <Client  clientProps={client}
             newClientsProps={clients}
             dateProps={d}
+            deleteClient= {deleteClient}
              />
         </div>
       </div>

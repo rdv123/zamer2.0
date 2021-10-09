@@ -50,7 +50,7 @@ const Forma = ({
             
             setClients([newObj, ...clients])
             
-            localStorage.setItem('clientsDate',JSON.stringify([newObj, ...clients]))
+            localStorage.setItem('clientsData',JSON.stringify([newObj, ...clients]))
             
             setTel('')
             setFirstName('')
