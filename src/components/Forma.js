@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+import * as axios from "axios";
 
 let count = 3;
 const Forma = ({ setClients, clients, dateProps }) => {
@@ -16,9 +17,23 @@ const Forma = ({ setClients, clients, dateProps }) => {
   const [statusClient, setStatusClient] = useState("");
   const [comment, setComment] = useState("");
 
-  let pushInfo = (e) => {
+  let pushInfo = async (e) => {
     count++;
     e.preventDefault();
+
+    const res = await axios.post(
+      "https://zamer-2-0-default-rtdb.firebaseio.com/clients.json",
+      newObj
+      // {
+      //   Headers: { "Content-Type": "application/json" },
+      // }
+    );
+    console.log("res", res.data);
+    // .then((res) => {
+    //   console.log("res", res);
+    //   console.log("res.data", res.data);
+    // });
+
     const newObj = {
       id: count.toString(),
       tel: tel,
@@ -39,7 +54,15 @@ const Forma = ({ setClients, clients, dateProps }) => {
       statusClient: statusClient,
       comment: comment,
     };
-
+    // handleSubmit = async (event) => {
+    //   event.preventDefault();
+    //   await axios
+    //     .post("https://zamer-2-0-default-rtdb.firebaseio.com/", { clients })
+    //     .then((res) => {
+    //       console.log("res", res);
+    //       console.log("res.data", res.data);
+    //     });
+    // };
     setClients([newObj, ...clients]);
 
     localStorage.setItem("clientsData", JSON.stringify([newObj, ...clients]));
