@@ -66,7 +66,7 @@ function App() {
       return { ...res.data[key], id: key };
     });
     console.log("axios-clients", clients);
-    // setClients(clients);
+    setClients(clients);
   };
 
   const updateCom = (id, newClient) => {

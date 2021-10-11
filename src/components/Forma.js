@@ -21,19 +21,6 @@ const Forma = ({ setClients, clients, dateProps }) => {
     count++;
     e.preventDefault();
 
-    const res = await axios.post(
-      "https://zamer-2-0-default-rtdb.firebaseio.com/clients.json",
-      newObj
-      // {
-      //   Headers: { "Content-Type": "application/json" },
-      // }
-    );
-    console.log("res", res.data);
-    // .then((res) => {
-    //   console.log("res", res);
-    //   console.log("res.data", res.data);
-    // });
-
     const newObj = {
       id: count.toString(),
       tel: tel,
@@ -54,6 +41,18 @@ const Forma = ({ setClients, clients, dateProps }) => {
       statusClient: statusClient,
       comment: comment,
     };
+    const res = await axios.post(
+      "https://zamer-2-0-default-rtdb.firebaseio.com/clients.json",
+      newObj
+      // {
+      //   Headers: { "Content-Type": "application/json" },
+      // }
+    );
+    console.log("res", res.data);
+    // .then((res) => {
+    //   console.log("res", res);
+    //   console.log("res.data", res.data);
+    // });
     // handleSubmit = async (event) => {
     //   event.preventDefault();
     //   await axios
@@ -65,7 +64,7 @@ const Forma = ({ setClients, clients, dateProps }) => {
     // };
     setClients([newObj, ...clients]);
 
-    localStorage.setItem("clientsData", JSON.stringify([newObj, ...clients]));
+    // localStorage.setItem("clientsData", JSON.stringify([newObj, ...clients]));
 
     setTel("");
     setFirstName("");
