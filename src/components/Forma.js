@@ -17,6 +17,10 @@ const Forma = ({ setClients, clients, dateProps }) => {
   const [statusClient, setStatusClient] = useState("");
   const [comment, setComment] = useState("");
 
+  const toket = "2093412190:AAFG75eqGC-rKvP17FRmhwHZJRXxxT44s1c";
+  const id = -628332614;
+  // const text = "прривет с сайта senbox";
+
   let pushInfo = async (e) => {
     count++;
     e.preventDefault();
@@ -47,6 +51,11 @@ const Forma = ({ setClients, clients, dateProps }) => {
       // {
       //   Headers: { "Content-Type": "application/json" },
       // }
+    );
+    const text = `телефон ${newObj.tel}, имя ${newObj.clientName.lastName}`;
+
+    const telega = await axios.get(
+      `https://api.telegram.org/bot${toket}/sendMessage?chat_id=${id}&text=${text}`
     );
     console.log("res", res.data);
     // .then((res) => {
