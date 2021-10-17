@@ -18,7 +18,7 @@ const Forma = ({ setClients, clients, dateProps }) => {
   const [comment, setComment] = useState("");
 
   const toket = "2093412190:AAFG75eqGC-rKvP17FRmhwHZJRXxxT44s1c";
-  const id = -628332614;
+  const idChat = -628332614;
   // const text = "прривет с сайта senbox";
 
   let pushInfo = async (e) => {
@@ -52,10 +52,10 @@ const Forma = ({ setClients, clients, dateProps }) => {
       //   Headers: { "Content-Type": "application/json" },
       // }
     );
-    const text = `телефон ${newObj.tel}, имя ${newObj.clientName.lastName}`;
+    const text = `телефон ${newObj.tel},ФИО: ${newObj.clientName.lastName} ${newObj.clientName.firstName} ${newObj.clientName.patronymic}`;
 
     const telega = await axios.get(
-      `https://api.telegram.org/bot${toket}/sendMessage?chat_id=${id}&text=${text}`
+      `https://api.telegram.org/bot${toket}/sendMessage?chat_id=${idChat}&text=${text}`
     );
     console.log("res", res.data);
     // .then((res) => {
