@@ -18,19 +18,26 @@ const Client = ({ newClientsProps, dateProps, deleteClient }) => {
           return (
             <div className="d-flex mt-3 shadow  test" key={client.id}>
               <div className="row">
-                <div className="col-sm">
+                <div className="col-md-3  mb-3 ms-3 mt-3">
                   <img src={logoA} width="100" height="100" />
                 </div>
-                <div className="col-sm test">
+                <div className="col-md-6">
                   Телефон:{client.tel}, ФИО:{client.clientName.firstName},
-                  {client.clientName.lastName},{client.clientName.patronymic},
+                  {client.clientName.lastName},{client.clientName.patronymic},{" "}
+                  <br />
                   Адрес:{client.address.city},{client.address.street},
                   {client.address.home},{client.address.housing},
-                  {client.address.apartment}, Статус:{client.statusClient},
+                  {client.address.apartment}, <br />
+                  Статус:
+                  {client.statusClient}, <br />
                   Комментарий:{client.comment}
                 </div>
-                <div>{client.date.toLocaleString()}</div>
-                <div className="col-sm">
+                <div className="position-relative col-md-3">
+                  <div className="position-absolute top-0 start-0">
+                    {client.date.toLocaleString()}
+                  </div>
+                </div>
+                <div className="col-sm mb-3 ms-3">
                   {/* <HomeButton/> */}
                   <button
                     onClick={() => history.push(`/design/${client.id}`)}
@@ -40,7 +47,7 @@ const Client = ({ newClientsProps, dateProps, deleteClient }) => {
                     Редактировать
                   </button>
                 </div>
-                <div className="col-sm">
+                <div className="col-sm ">
                   <button
                     onClick={() => deleteClient(client.id)}
                     type="button"
