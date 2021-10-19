@@ -91,7 +91,7 @@ const Forma = ({ setClients, clients, dateProps }) => {
   console.log("dddddddddddddd");
   // console.log('фамилия',firstName)
   return (
-    <div>
+    <div className="d-flex p-2 bd-highlight">
       <form className="row g-3 mt-3 text-light bg-secondary shadow">
         <div className="col-md-3">
           <label for="inputEmail4" className="form-label">

@@ -108,6 +108,7 @@ function App() {
               clients={clients}
               setClients={setClients}
               updateCom={updateCom}
+              getClients={getClients}
             />
           )}
         />
