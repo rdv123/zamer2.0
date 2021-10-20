@@ -58,7 +58,9 @@ function App() {
 
     console.log("response axios", res);
     console.log("response axios data", res.data);
-
+    if (res.data === null) {
+      return;
+    }
     const keys = Object.keys(res.data);
     console.log("keys", keys);
 

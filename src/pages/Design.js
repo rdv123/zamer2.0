@@ -1,51 +1,73 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useHistory } from "react-router";
+import axios from "axios";
 
-const Design = ({ clients, updateCom, getClients }) => {
+const Design = ({ updateCom }) => {
   let history = useHistory();
   // const [client,setClient] = useState(null)
   //    const id ='2'
   let { id } = useParams();
 
   console.log("id", id);
-  let client = clients.find((client) => client.id == id);
 
-  const [tel, setTel] = useState(client.tel);
-  const [firstName, setFirstName] = useState(client.clientName.firstName);
-  const [lastName, setLastName] = useState(client.clientName.lastName);
-  const [patronymic, setPatronymic] = useState(client.clientName.patronymic);
-  const [city, setCity] = useState(client.address.city);
-  const [street, setStreet] = useState(client.address.street);
-  const [home, setHome] = useState(client.address.home);
-  const [housing, setHousing] = useState(client.address.housing);
-  const [apartment, setApartment] = useState(client.address.apartment);
-  const [statusClient, setStatusClient] = useState(client.statusClient);
-  const [comment, setComment] = useState(client.comment);
-  const [area, setArea] = useState(client.area);
-  const [perimeter, setPerimeter] = useState(client.perimeter);
+  // const [client, setClient] = useState({});
+  const [tel, setTel] = useState("");
+
+  // const [firstName, setFirstName] = useState(client.clientName.firstName);
+  // const [lastName, setLastName] = useState(client.clientName.lastName);
+  // const [patronymic, setPatronymic] = useState(client.clientName.patronymic);
+  // const [city, setCity] = useState(client.address.city);
+  // const [street, setStreet] = useState(client.address.street);
+  // const [home, setHome] = useState(client.address.home);
+  // const [housing, setHousing] = useState(client.address.housing);
+  // const [apartment, setApartment] = useState(client.address.apartment);
+  // const [statusClient, setStatusClient] = useState(client.statusClient);
+  // const [comment, setComment] = useState(client.comment);
+  // const [area, setArea] = useState(client.area);
+  // const [perimeter, setPerimeter] = useState(client.perimeter);
+
+  useEffect(() => {
+    getClients();
+  }, []);
 
   const commonUpdate = (e) => {
-    e.preventDefault();
-    const newClient = {
-      ...client,
-      tel,
-      clientName: { firstName, lastName, patronymic },
-      address: { city, street, home, housing, apartment },
-      statusClient: statusClient,
-      comment: comment,
-      area: area,
-      perimeter: perimeter,
-    };
-    console.log("Client", client);
-    // console.log('newClient',newClient)
-    updateCom(id, newClient);
+    // e.preventDefault();
+    // const newClient = {
+    //   ...client,
+    //   tel,
+    //   clientName: { firstName, lastName, patronymic },
+    //   address: { city, street, home, housing, apartment },
+    //   statusClient: statusClient,
+    //   comment: comment,
+    //   area: area,
+    //   perimeter: perimeter,
+    // };
+    // console.log("Client", client);
+    // // console.log('newClient',newClient)
+    // updateCom(id, newClient);
   };
-  // useEffect(() => {
-  //   console.log("cDesign", clients);
+  const getClients = async () => {
+    const res = await axios.get(
+      "https://zamer-2-0-default-rtdb.firebaseio.com/clients.json"
+    );
 
-  //   getClients();
-  // }, []);
+    console.log("response axios", res);
+    console.log("response axios data", res.data);
+
+    const keys = Object.keys(res.data);
+    console.log("keys", keys);
+
+    const clients = keys.map((key) => {
+      return { ...res.data[key], id: key };
+    });
+    console.log("clients1111", clients);
+    // setClients(clients);
+
+    let client = clients.find((client) => client.id == id);
+    console.log("client", client);
+    setTel(client.tel);
+  };
 
   return (
     <div className="container">
@@ -63,7 +85,7 @@ const Design = ({ clients, updateCom, getClients }) => {
             onChange={(event) => setTel(event.target.value)}
           />
         </div>
-        <div className="col-md-3">
+        {/* <div className="col-md-3">
           <label for="inputPassword4" className="form-label">
             Имя
           </label>
@@ -232,7 +254,7 @@ const Design = ({ clients, updateCom, getClients }) => {
               Проверить
             </label>
           </div>
-        </div>
+        </div> */}
 
         <div className="col-12">
           <button

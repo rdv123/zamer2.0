@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import * as axios from "axios";
 
-let count = 3;
+let count = 0;
 const Forma = ({ setClients, clients, dateProps }) => {
   const [tel, setTel] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -22,7 +22,7 @@ const Forma = ({ setClients, clients, dateProps }) => {
   // const text = "прривет с сайта senbox";
 
   let pushInfo = async (e) => {
-    count++;
+    // count++;
     e.preventDefault();
 
     const newObj = {
@@ -48,11 +48,14 @@ const Forma = ({ setClients, clients, dateProps }) => {
     const res = await axios.post(
       "https://zamer-2-0-default-rtdb.firebaseio.com/clients.json",
       newObj
+
       // {
       //   Headers: { "Content-Type": "application/json" },
       // }
     );
-    const text = `телефон ${newObj.tel},ФИО: ${newObj.clientName.lastName} ${newObj.clientName.firstName} ${newObj.clientName.patronymic}`;
+
+    const text = `телефон ${newObj.tel},\n
+                  ФИО: ${newObj.clientName.lastName} ${newObj.clientName.firstName} ${newObj.clientName.patronymic}`;
 
     const telega = await axios.get(
       `https://api.telegram.org/bot${toket}/sendMessage?chat_id=${idChat}&text=${text}`

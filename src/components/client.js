@@ -4,10 +4,11 @@ import HomeButton from "./HomeBtn";
 import { useHistory } from "react-router-dom";
 
 const Client = ({ newClientsProps, dateProps, deleteClient }) => {
+  console.log("newClientsProps", newClientsProps);
   let history = useHistory();
   // const handleClick=(id)=>{
   //   console.log(id,)
-  //   // history.push('/design/')
+  //   history.push('/design/')
   // }
   return (
     <div>
