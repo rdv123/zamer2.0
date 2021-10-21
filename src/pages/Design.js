@@ -7,7 +7,7 @@ const Design = ({ updateCom }) => {
   let history = useHistory();
   // const [client,setClient] = useState(null)
   //    const id ='2'
-  let { id } = useParams();
+  const { id } = useParams();
 
   console.log("id", id);
 
@@ -51,7 +51,9 @@ const Design = ({ updateCom }) => {
     const res = await axios.get(
       "https://zamer-2-0-default-rtdb.firebaseio.com/clients.json"
     );
-
+    if (res.data === null) {
+      return;
+    }
     console.log("response axios", res);
     console.log("response axios data", res.data);
 
@@ -63,7 +65,7 @@ const Design = ({ updateCom }) => {
     });
     console.log("clients1111", clients);
     // setClients(clients);
-
+    console.log("idDDDD", clients);
     let client = clients.find((client) => client.id == id);
     console.log("client", client);
     setTel(client.tel);

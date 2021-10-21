@@ -60,7 +60,7 @@ const Forma = ({ setClients, clients, dateProps }) => {
     const telega = await axios.get(
       `https://api.telegram.org/bot${toket}/sendMessage?chat_id=${idChat}&text=${text}`
     );
-    console.log("res", res.data);
+    console.log("res", res.data.name);
     // .then((res) => {
     //   console.log("res", res);
     //   console.log("res.data", res.data);
@@ -74,7 +74,8 @@ const Forma = ({ setClients, clients, dateProps }) => {
     //       console.log("res.data", res.data);
     //     });
     // };
-    setClients([newObj, ...clients]);
+    const obj = { ...newObj, id: res.data.name };
+    setClients([obj, ...clients]);
 
     // localStorage.setItem("clientsData", JSON.stringify([newObj, ...clients]));
 
@@ -93,6 +94,7 @@ const Forma = ({ setClients, clients, dateProps }) => {
   };
   console.log("dddddddddddddd");
   // console.log('фамилия',firstName)
+
   return (
     <div className="d-flex p-2 bd-highlight">
       <form className="row g-3 mt-3 text-light bg-secondary shadow">

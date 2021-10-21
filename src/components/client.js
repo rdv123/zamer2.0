@@ -14,7 +14,7 @@ const Client = ({ newClientsProps, dateProps, deleteClient }) => {
     <div>
       <ul className="list-group">
         {newClientsProps.map((client) => {
-          // console.log({},'client.date')
+          console.log("client.date", client.id);
           // console.log('new Date()',new Date())
           return (
             <div className="d-flex mt-3 shadow  test" key={client.id}>
