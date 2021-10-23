@@ -14,18 +14,18 @@ const Design = ({ updateCom }) => {
   // const [client, setClient] = useState({});
   const [tel, setTel] = useState("");
 
-  // const [firstName, setFirstName] = useState(client.clientName.firstName);
-  // const [lastName, setLastName] = useState(client.clientName.lastName);
-  // const [patronymic, setPatronymic] = useState(client.clientName.patronymic);
-  // const [city, setCity] = useState(client.address.city);
-  // const [street, setStreet] = useState(client.address.street);
-  // const [home, setHome] = useState(client.address.home);
-  // const [housing, setHousing] = useState(client.address.housing);
-  // const [apartment, setApartment] = useState(client.address.apartment);
-  // const [statusClient, setStatusClient] = useState(client.statusClient);
-  // const [comment, setComment] = useState(client.comment);
-  // const [area, setArea] = useState(client.area);
-  // const [perimeter, setPerimeter] = useState(client.perimeter);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [patronymic, setPatronymic] = useState("");
+  const [city, setCity] = useState("");
+  const [street, setStreet] = useState("");
+  const [home, setHome] = useState("");
+  const [housing, setHousing] = useState("");
+  const [apartment, setApartment] = useState("");
+  const [statusClient, setStatusClient] = useState("");
+  const [comment, setComment] = useState("");
+  const [area, setArea] = useState("");
+  const [perimeter, setPerimeter] = useState("");
 
   useEffect(() => {
     getClients();
@@ -69,6 +69,18 @@ const Design = ({ updateCom }) => {
     let client = clients.find((client) => client.id == id);
     console.log("client", client);
     setTel(client.tel);
+    setFirstName(client.clientName.firstName);
+    setLastName(client.clientName.lastName);
+    setPatronymic(client.clientName.patronymic);
+    setCity(client.address.city);
+    setStreet(client.address.street);
+    setHome(client.address.home);
+    setHousing(client.address.housing);
+    setApartment(client.address.apartment);
+    setStatusClient(client.statusClient);
+    setComment(client.comment);
+    setArea(client.area);
+    setPerimeter(client.perimeter);
   };
 
   return (
@@ -87,7 +99,7 @@ const Design = ({ updateCom }) => {
             onChange={(event) => setTel(event.target.value)}
           />
         </div>
-        {/* <div className="col-md-3">
+        <div className="col-md-3">
           <label for="inputPassword4" className="form-label">
             Имя
           </label>
@@ -256,7 +268,7 @@ const Design = ({ updateCom }) => {
               Проверить
             </label>
           </div>
-        </div> */}
+        </div>
 
         <div className="col-12">
           <button
