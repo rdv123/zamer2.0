@@ -55,7 +55,10 @@ const Forma = ({ setClients, clients, dateProps }) => {
     );
 
     const text = `телефон ${newObj.tel},\n
-                  ФИО: ${newObj.clientName.lastName} ${newObj.clientName.firstName} ${newObj.clientName.patronymic}`;
+                  ФИО: ${newObj.clientName.lastName} ${newObj.clientName.firstName} ${newObj.clientName.patronymic};
+                  Адрес: ${newObj.address.city},${newObj.address.street},${newObj.address.home},${newObj.address.housing},
+                  ${newObj.address.apartment};
+                  Коментарий: ${newObj.comment}. `;
 
     const telega = await axios.get(
       `https://api.telegram.org/bot${toket}/sendMessage?chat_id=${idChat}&text=${text}`
