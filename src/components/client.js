@@ -34,9 +34,7 @@ const Client = ({ newClientsProps, dateProps, deleteClient }) => {
                   Комментарий:{client.comment}
                 </div>
                 <div className="position-relative col-md-3">
-                  <div className="position-absolute top-0 start-0">
-                    {client.date.toLocaleString()}
-                  </div>
+                  {client.date.toLocaleString()}
                 </div>
                 <div className="col-sm mb-3 ms-3">
                   {/* <HomeButton/> */}
