@@ -75,7 +75,7 @@ function Home({ setClients, clients }) {
                   tabindex="-1"
                   aria-disabled="true"
                 >
-                  Договор
+                  Договор заключен
                   <span className="badge bg-secondary">{c.length}</span>
                 </a>
               </li>
